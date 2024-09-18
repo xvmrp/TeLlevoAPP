@@ -1,7 +1,6 @@
-
 ion-content {
     --background: #1c1c1e; /* Fondo oscuro general */
-  
+    
     .form-slide {
       display: flex;
       flex-direction: column;
@@ -33,6 +32,8 @@ ion-content {
     ion-input {
       color: #ffffff; /* Texto blanco en los inputs */
     }
+
+   
   
     ion-button {
       max-width: 320px;
@@ -55,14 +56,14 @@ ion-content {
       color: #00ff00; /* Link en verde */
       text-decoration: none;
     }
-  
+
     hr {
-      width: 100%; /* Ancho completo */
-      max-width: 320px; /* Alineado con el contenido */
-      border: 0;
-      border-top: 1px solid #ffffff; /* Línea blanca */
-      margin: 20px 0; /* Espacio superior e inferior */
-      opacity: 0.5; /* Transparencia de la línea */
-    }
+        width: 100%; /* Ancho completo */
+        max-width: 320px; /* Alineado con el contenido */
+        border: 0;
+        border-top: 1px solid #ffffff; /* Línea blanca */
+        margin: 20px 0; /* Espacio superior e inferior */
+        opacity: 0.5; /* Transparencia de la línea */
+      }
   }
   

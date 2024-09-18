@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" color="dark">
+  <swiper-container>
+    <swiper-slide>
+      <div class="form-slide">
+        <h2 class="title">Regístrate</h2>
+        <ion-item lines="none">
+          <ion-icon name="person" slot="start"></ion-icon>
+          <ion-input placeholder="Ingresa tu nombre" [(ngModel)]="email"></ion-input>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-icon name="" slot="start"></ion-icon>
+          <ion-input placeholder="Ingresa tu apellido" [(ngModel)]="password" type="password"></ion-input>
+        </ion-item>
+        <ion-button expand="block" fill="clear" (click)="nextSlide()" [disabled]="!email">
+          Continuar
+        </ion-button>    
+        <ion-item lines="none">
+          <p>Ya tienes una cuenta? <a href="/home"> Login</a></p>
+        </ion-item>
+        <hr>
+
+        <ion-item lines="none" >
+          <ion-icon name="logo-apple" slot="start"></ion-icon>
+          <ion-button fill="clear">Continuar Con Apple</ion-button>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-icon name="logo-google" slot="start"></ion-icon>
+          <ion-button fill="clear" >Continuar Con Google</ion-button>
+        </ion-item>  
+      </div>
+    </swiper-slide>
+
+    <swiper-slide>
+      <div class="form-slide"></div>
+    </swiper-slide>
+
+  </swiper-container>
+</ion-content>
