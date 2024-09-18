@@ -9,26 +9,37 @@ import { Usuario } from 'src/app/interfaces/usuario';
 })
 export class HomePage implements OnInit {
 
-  mensaje:string=''
-  usr:Usuario={
-    username:'',
-    password:''
+  mensaje: string = '';
+  usr: Usuario = {
+    username: '',
+    password: '',
+    role: ''  // Añadimos el rol aquí con un valor por defecto vacío
   }
 
-  constructor(private router:Router) { }
+  constructor(private router: Router) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
-  onSubmit(){
+  onSubmit() {
     console.log(this.usr);
-    if(this.usr.username=="wacoldo" && this.usr.password=="123"){
-      console.log("Acceso ok");
-        this.router.navigate(['/home'])
-    }
-    else{
-      this.mensaje='No existe credenciales con esos valores';
+
+    // Validación de usuario
+    if (this.usr.username === "usuario" && this.usr.password === "123") {
+      console.log("Acceso usuario");
+      this.usr.role = 'usuario';  // Asignar el rol de usuario
+      this.router.navigate(['/role-selection']);  // Navega a selección de rol
+    } 
+    
+    // Validación de administrador
+    else if (this.usr.username === "admin" && this.usr.password === "admin123") {
+      console.log("Acceso admin");
+      this.usr.role = 'admin';  // Asignar el rol de administrador
+      this.router.navigate(['/admin']);  // Navega a página de administrador
+    } 
+    
+    // Credenciales incorrectas
+    else {
+      this.mensaje = 'No existen credenciales con esos valores';
     }
   }
-
 }

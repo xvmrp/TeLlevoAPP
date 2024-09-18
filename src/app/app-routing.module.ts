@@ -20,6 +20,26 @@ const routes: Routes = [
     path: 'sign-up',
     loadChildren: () => import('./pages/sign-up/sign-up.module').then( m => m.SignUpPageModule)
   },
+  {
+    path: 'inicio',
+    loadChildren: () => import('./pages/inicio/inicio.module').then( m => m.InicioPageModule)
+  },
+  {
+    path: 'conductor',
+    loadChildren: () => import('./pages/conductor/conductor.module').then( m => m.ConductorPageModule)
+  },
+  {
+    path: 'pasajero',
+    loadChildren: () => import('./pages/pasajero/pasajero.module').then( m => m.PasajeroPageModule)
+  },
+  {
+    path: 'role-selection',
+    loadChildren: () => import('./pages/role-selection/role-selection.module').then( m => m.RoleSelectionPageModule)
+  },
+  {
+    path: 'admin',
+    loadChildren: () => import('./pages/admin/admin.module').then( m => m.AdminPageModule)
+  },
  
   
 ];
