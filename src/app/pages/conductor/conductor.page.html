@@ -1,9 +1,33 @@
 <ion-header>
   <ion-toolbar color="dark">
-    <ion-title>Opciones de Conductor</ion-title>
+    <ion-title>Conductor</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/perfil">
+        <ion-icon name="person-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding" color="dark">
-  <!-- Aquí van las opciones para los conductores -->
+<ion-content color="dark">
+  <div class="map-container">
+    <!-- Aquí se puede integrar un componente de mapa -->
+    <div class="map-placeholder">
+      <p>Mapa de ubicaciones</p>
+    </div>
+  </div>
+
+  <ion-item class="toggle-item">
+    <ion-label>Disponible para viajes</ion-label>
+    <ion-toggle [(ngModel)]="disponible" (ionChange)="cambiarDisponibilidad()"></ion-toggle>
+  </ion-item>
+
+  <div class="action-buttons">
+    <ion-button expand="block" (click)="verSolicitudes()" color="tertiary">
+      Ver Solicitudes de Pasajeros
+    </ion-button>
+    <ion-button expand="block" routerLink="/historial-viajes" color="secondary">
+      Ver Historial de Viajes
+    </ion-button>
+  </div>
 </ion-content>

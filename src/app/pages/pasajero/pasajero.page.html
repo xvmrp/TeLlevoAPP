@@ -1,9 +1,35 @@
 <ion-header>
   <ion-toolbar color="dark">
-    <ion-title>Opciones de Pasajero</ion-title>
+    <ion-title>Pasajero</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/perfil">
+        <ion-icon name="person-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding" color="dark">
-  <!-- Aquí van las opciones para los pasajeros -->
+<ion-content color="dark">
+  <div class="map-container">
+    <!-- Aquí podrías insertar un componente de mapa -->
+    <div class="map-placeholder">
+      <p>Mapa de ubicaciones</p>
+    </div>
+  </div>
+
+  <ion-item class="search-item" lines="none">
+    <ion-input placeholder="Buscar conductor" clearInput></ion-input>
+    <ion-button fill="clear">
+      <ion-icon name="search-outline"></ion-icon>
+    </ion-button>
+  </ion-item>
+
+  <div class="action-buttons">
+    <ion-button expand="block" (click)="buscarConductores()" color="success">
+      Buscar Conductores Disponibles
+    </ion-button>
+    <ion-button expand="block" routerLink="/historial-viajes" color="secondary">
+      Ver Historial de Viajes
+    </ion-button>
+  </div>
 </ion-content>

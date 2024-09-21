@@ -12,4 +12,9 @@ export class PasajeroPage implements OnInit {
   ngOnInit() {
   }
 
+  buscarConductores() {
+    // Aquí implementas la lógica para buscar conductores disponibles
+    console.log('Buscando conductores disponibles...');
+  }
+
 }
