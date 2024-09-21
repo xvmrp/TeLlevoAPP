@@ -12,6 +12,7 @@ export class HomePage implements OnInit {
   mensaje: string = '';
   usr: Usuario = {
     username: '',
+    email:'', // Añadimos el rol aquí con un valor por defecto vacío
     password: '',
     role: ''  // Añadimos el rol aquí con un valor por defecto vacío
   }

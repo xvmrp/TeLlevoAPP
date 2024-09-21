@@ -1,13 +1,50 @@
 <ion-header>
   <ion-toolbar color="dark">
     <ion-title>Elige tu rol</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="goToProfile()">
+        <ion-icon slot="icon-only" name="person-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding" color="dark">
+<ion-content color="dark" class="ion-padding">
   <div class="role-selection-container">
-    <h2>¿Qué rol deseas usar hoy?</h2>
-    <ion-button expand="block" fill="solid" color="success" (click)="selectConductor()">Conductor</ion-button>
-    <ion-button expand="block" fill="solid" color="tertiary" (click)="selectPasajero()">Pasajero</ion-button>
+    <h2 class="title">¿Qué rol deseas usar hoy?</h2>
+
+    <!-- Tarjeta para Conductor -->
+    <ion-card color="success" button (click)="selectConductor()">
+      <ion-card-header>
+        <ion-card-title>
+          <ion-icon name="car" size="large"></ion-icon>
+          Conductor
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        Elige ser conductor y ofrece viajes a otros estudiantes. Podrás gestionar tus rutas y horarios.
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Tarjeta para Pasajero -->
+    <ion-card color="tertiary" button (click)="selectPasajero()">
+      <ion-card-header>
+        <ion-card-title>
+          <ion-icon name="person" size="large"></ion-icon>
+          Pasajero
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        Elige ser pasajero para buscar viajes disponibles. Podrás ver las rutas y seleccionar la que mejor te convenga.
+      </ion-card-content>
+    </ion-card>
+
+
+    <!-- Mapa interactivo (Ya agregado, solo mejorar el estilo) -->
+    <div class="map-section">
+      <h3 class="subtitle">Ubicaciones actuales</h3>
+      <div id="map" style="height: 300px;"></div>
+    </div>
+
   </div>
 </ion-content>

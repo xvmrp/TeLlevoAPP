@@ -17,4 +17,8 @@ export class RoleSelectionPage {
   selectPasajero() {
     this.router.navigate(['/pasajero']);
   }
+
+  goToProfile() {
+    this.router.navigate(['/perfil']);
+  }
 }
