@@ -1,52 +1,4 @@
 ion-content {
-<<<<<<< HEAD
-    --background: #1c1c1e; /* Fondo oscuro general */
-    
-    .map-container {
-      height: 300px;
-      background-color: #2a2a2b;
-      margin-bottom: 20px;
-      border-radius: 12px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #ffffff;
-      font-size: 1.2rem;
-    }
-  
-    .search-item {
-      background-color: #2a2a2b;
-      border-radius: 10px;
-      --background: #2a2a2b;
-      --color: #ffffff;
-      --highlight-color-focused: #00ff00;
-      margin-bottom: 15px;
-    }
-  
-    ion-input {
-      color: #ffffff;
-    }
-  
-    ion-button {
-      --border-radius: 10px;
-      margin-bottom: 10px;
-      font-size: 1rem;
-      --color: #ffffff;
-    }
-  
-    .action-buttons {
-      ion-button {
-        max-width: 320px;
-        margin: 0 auto 10px;
-      }
-    }
-  
-    ion-icon {
-      color: #ffffff;
-    }
-  }
-  
-=======
   --background: #1b1b1b;
   display: flex;
   justify-content: center;
@@ -127,9 +79,8 @@ ion-content {
   box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
 }
 
-.home-style-button[color="light"] {
+.login-style-button[color="light"] {
   --background: #ffffff;
   --color: #000000;
   box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
 }
->>>>>>> 5772928 (speed run)

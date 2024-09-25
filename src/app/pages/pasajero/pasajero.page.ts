@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
-=======
 import { Router } from '@angular/router';
->>>>>>> 5772928 (speed run)
 
 @Component({
   selector: 'app-pasajero',
@@ -10,19 +7,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./pasajero.page.scss'],
 })
 export class PasajeroPage implements OnInit {
-<<<<<<< HEAD
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-  buscarConductores() {
-    // Aquí implementas la lógica para buscar conductores disponibles
-    console.log('Buscando conductores disponibles...');
-  }
-
-=======
   destino: string = '';
   mensaje: string = '';
 
@@ -38,5 +22,4 @@ export class PasajeroPage implements OnInit {
       this.mensaje = 'Por favor, ingresa un destino para buscar conductores.';
     }
   }
->>>>>>> 5772928 (speed run)
 }

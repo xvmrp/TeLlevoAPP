@@ -44,8 +44,7 @@ const routes: Routes = [
     path: 'perfil',
     loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule)
   },
-<<<<<<< HEAD
-=======
+
   {
     path: 'crear-viaje',
     loadChildren: () => import('./pages/crear-viaje/crear-viaje.module').then( m => m.CrearViajePageModule)
@@ -58,7 +57,7 @@ const routes: Routes = [
     path: 'buscar-conductor',
     loadChildren: () => import('./pages/buscar-conductor/buscar-conductor.module').then( m => m.BuscarConductorPageModule)
   },
->>>>>>> 5772928 (speed run)
+
  
   
 ];

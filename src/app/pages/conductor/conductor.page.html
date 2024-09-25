@@ -9,32 +9,35 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content color="dark">
-  <div class="map-container">
-    <!-- Aquí se puede integrar un componente de mapa -->
-    <div class="map-placeholder">
-      <p>Mapa de ubicaciones</p>
+<ion-content color="dark" fullscreen>
+  <div class="content-container">
+    <ion-card class="info-card">
+      <ion-card-header>
+        <ion-card-title class="card-title">Disponibilidad</ion-card-title>
+        <ion-card-subtitle class="card-subtitle">Activa tu estado como conductor</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item class="toggle-item">
+          <ion-label>Disponible para viajes</ion-label>
+          <ion-toggle [(ngModel)]="disponible" (ionChange)="cambiarDisponibilidad()"></ion-toggle>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <div class="action-buttons">
+      <ion-button expand="block" (click)="crearViaje()" color="success" class="custom-button">
+        Crear Viaje
+      </ion-button>
+      <ion-button expand="block" (click)="verHistorial()" color="success" class="custom-button">
+        Ver Historial
+      </ion-button>
+      <ion-button expand="block" routerLink="/role-selection" color="primary" class="custom-button">
+        Volver 
+      </ion-button>
     </div>
-  </div>
 
-  <ion-item class="toggle-item">
-    <ion-label>Disponible para viajes</ion-label>
-    <ion-toggle [(ngModel)]="disponible" (ionChange)="cambiarDisponibilidad()"></ion-toggle>
-  </ion-item>
-
-  <div class="action-buttons">
-<<<<<<< HEAD
-    <ion-button expand="block" (click)="verSolicitudes()" color="tertiary">
-      Ver Solicitudes de Pasajeros
-    </ion-button>
-    <ion-button expand="block" routerLink="/historial-viajes" color="secondary">
-=======
-    <ion-button expand="block" (click)="crearViaje()" color="tertiary">
-      Crear viaje
-    </ion-button>
-    <ion-button expand="block" (click)="verHistorial()" color="secondary">
->>>>>>> 5772928 (speed run)
-      Ver Historial de Viajes
-    </ion-button>
+    <div class="footer">
+      <p>Gestiona tus viajes de forma sencilla y rápida.</p>
+    </div>
   </div>
 </ion-content>

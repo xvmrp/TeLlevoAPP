@@ -1,9 +1,6 @@
 <ion-header>
   <ion-toolbar color="dark">
-<<<<<<< HEAD
-    <ion-title>Pasajero</ion-title>
-=======
->>>>>>> 5772928 (speed run)
+    <ion-title class="page-title">Pasajero</ion-title>
     <ion-buttons slot="end">
       <ion-button routerLink="/perfil">
         <ion-icon name="person-circle-outline"></ion-icon>
@@ -12,31 +9,6 @@
   </ion-toolbar>
 </ion-header>
 
-<<<<<<< HEAD
-<ion-content color="dark">
-  <div class="map-container">
-    <!-- Aquí podrías insertar un componente de mapa -->
-    <div class="map-placeholder">
-      <p>Mapa de ubicaciones</p>
-    </div>
-  </div>
-
-  <ion-item class="search-item" lines="none">
-    <ion-input placeholder="Buscar conductor" clearInput></ion-input>
-    <ion-button fill="clear">
-      <ion-icon name="search-outline"></ion-icon>
-    </ion-button>
-  </ion-item>
-
-  <div class="action-buttons">
-    <ion-button expand="block" (click)="buscarConductores()" color="success">
-      Buscar Conductores Disponibles
-    </ion-button>
-    <ion-button expand="block" routerLink="/historial-viajes" color="secondary">
-      Ver Historial de Viajes
-    </ion-button>
-  </div>
-=======
 <ion-content color="dark" fullscreen>
   <div class="content-container">
     <ion-card class="info-card">
@@ -64,13 +36,12 @@
     </div>
 
     <div class="action-buttons">
-      <ion-button expand="block" (click)="buscarConductores()" color="primary" class="login-style-button">
+      <ion-button expand="block" (click)="buscarConductores()" color="success" class="login-style-button">
         Buscar Conductores
       </ion-button>
-      <ion-button expand="block" routerLink="/historial-viajes" color="primary" class="login-style-button">
-        Ver Historial
+      <ion-button expand="block" routerLink="/role-selection" color="primary" class="custom-button">
+        Volver
       </ion-button>
     </div>
   </div>
->>>>>>> 5772928 (speed run)
 </ion-content>
