@@ -1,0 +1,30 @@
+ion-content {
+    --background: #121212;
+    color: #ffffff;
+  }
+  
+  ion-card {
+    background: #1e1e1e;
+    margin: 10px 0;
+  }
+  
+  ion-card-title {
+    color: #ffffff;
+  }
+  
+  .action-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .no-data {
+    text-align: center;
+    margin-top: 20px;
+    color: #bbbbbb;
+  }
+  
+  ion-card-content p {
+    margin: 5px 0;
+  }
+  

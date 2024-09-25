@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar color="dark">
+
+    <ion-buttons slot="end">
+      <ion-button routerLink="/perfil">
+        <ion-icon name="person-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Detalles del Viaje</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="stacked">Destino</ion-label>
+        <ion-input placeholder="Ingresa el destino" [(ngModel)]="destino"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Descripción del Viaje</ion-label>
+        <ion-textarea placeholder="Describe tu viaje brevemente" [(ngModel)]="descripcion"></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Número de asientos</ion-label>
+        <ion-input type="number" min="1" placeholder="Ejemplo: 3" [(ngModel)]="asientos"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Costo por persona</ion-label>
+        <ion-input type="number" min="0" placeholder="Ejemplo: 1500" [(ngModel)]="costo"></ion-input>
+      </ion-item>
+
+      <div class="map-container">
+        <div class="map-placeholder">
+          <p>Mapa Interactivo (Selecciona tu destino)</p>
+          <ion-icon name="map-outline" style="font-size: 50px; color: #ffffff;"></ion-icon>
+        </div>
+      </div>
+
+      <div class="status-message" *ngIf="!isComplete()">
+        <ion-label color="danger">Complete todos los campos para crear el viaje.</ion-label>
+      </div>
+
+      <div class="action-buttons">
+        <ion-button expand="block" color="tertiary" (click)="crearViaje()" [disabled]="!isComplete()">
+          Confirmar Viaje
+        </ion-button>
+        <ion-button expand="block" color="secondary" routerLink="/conductor">
+          Cancelar
+        </ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

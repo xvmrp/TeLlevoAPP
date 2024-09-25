@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="end">
+      <ion-button routerLink="/perfil">
+        <ion-icon name="person-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark">
+  <ion-card *ngFor="let viaje of viajes">
+    <ion-card-header>
+      <ion-card-title>{{ viaje.destino }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p><strong>Descripción:</strong> {{ viaje.descripcion }}</p>
+      <p><strong>Asientos:</strong> {{ viaje.asientos }}</p>
+      <p><strong>Costo por persona:</strong> ${{ viaje.costo }}</p>
+      <p><strong>Fecha:</strong> {{ viaje.fecha | date:'short' }}</p>
+
+      <div class="action-buttons">
+        <ion-button color="primary" (click)="verDetalles(viaje)">
+          Ver Detalles
+        </ion-button>
+        <ion-button color="danger" (click)="eliminarViaje(viaje)">
+          Eliminar
+        </ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <div *ngIf="viajes.length === 0" class="no-data">
+    <p>No hay viajes registrados.</p>
+  </div>
+</ion-content>

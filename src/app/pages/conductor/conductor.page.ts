@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
+=======
+import { Router } from '@angular/router';
+>>>>>>> 5772928 (speed run)
 
 @Component({
   selector: 'app-conductor',
@@ -7,7 +11,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConductorPage implements OnInit {
   disponible: boolean = false;
+<<<<<<< HEAD
   constructor() { }
+=======
+  constructor(private router: Router) { }
+>>>>>>> 5772928 (speed run)
 
   ngOnInit() {
   }
@@ -21,9 +29,20 @@ export class ConductorPage implements OnInit {
     }
   }
 
+<<<<<<< HEAD
   verSolicitudes() {
     // Lógica para ver las solicitudes de pasajeros
     console.log('Mostrando solicitudes de pasajeros...');
   }
 
+=======
+  crearViaje() {
+    // Lógica para ver las solicitudes de pasajeros
+    console.log('Mostrando solicitudes de pasajeros...');
+    this.router.navigate(['/crear-viaje']);
+  }
+  verHistorial() {
+    this.router.navigate(['/historial']);
+  }
+>>>>>>> 5772928 (speed run)
 }
