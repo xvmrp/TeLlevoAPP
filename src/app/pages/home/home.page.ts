@@ -1,46 +1,38 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Usuario } from 'src/app/interfaces/usuario';
+import { StorageService } from '../../services/storage.service'; // Asegúrate de que la ruta sea correcta
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
 })
-export class HomePage implements OnInit {
-
-  mensaje: string = '';
-  usr: Usuario = {
+export class HomePage {
+  usr = {
     username: '',
-    email:'', // Añadimos el rol aquí con un valor por defecto vacío
-    password: '',
-    role: ''  // Añadimos el rol aquí con un valor por defecto vacío
-  }
+    password: ''
+  };
 
-  constructor(private router: Router) { }
+  constructor(private storageService: StorageService, private router: Router) {}
 
-  ngOnInit() {}
+  async onSubmit() {
+    // Obtener el usuario guardado en Storage
+    const usuario = await this.storageService.getItem('usuario');
 
-  onSubmit() {
-    console.log(this.usr);
+    if (usuario) {
+      // Validar credenciales con el username y la contraseña
+      const usernameIngresado = this.usr.username.trim();
+      const passwordIngresado = this.usr.password.trim();
 
-    // Validación de usuario
-    if (this.usr.username === "usuario" && this.usr.password === "123") {
-      console.log("Acceso usuario");
-      this.usr.role = 'usuario';  // Asignar el rol de usuario
-      this.router.navigate(['/role-selection']);  // Navega a selección de rol
-    } 
-    
-    // Validación de administrador
-    else if (this.usr.username === "admin" && this.usr.password === "admin123") {
-      console.log("Acceso admin");
-      this.usr.role = 'admin';  // Asignar el rol de administrador
-      this.router.navigate(['/admin']);  // Navega a página de administrador
-    } 
-    
-    // Credenciales incorrectas
-    else {
-      this.mensaje = 'No existen credenciales con esos valores';
+      // Comparar credenciales
+      if (usernameIngresado === usuario.username && passwordIngresado === usuario.password) {
+        console.log('Inicio de sesión exitoso');
+        this.router.navigate(['/role-selection']);  // Redirigir a la página de selección de rol
+      } else {
+        console.log('Credenciales incorrectas');
+      }
+    } else {
+      console.log('No hay usuarios registrados');
     }
   }
 }

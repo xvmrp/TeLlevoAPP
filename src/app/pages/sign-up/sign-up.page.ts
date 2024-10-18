@@ -1,8 +1,6 @@
-import { Component, ViewChild } from '@angular/core';
-import { register } from 'swiper/element/bundle';
-import Swiper from 'swiper';
-
-register();
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { StorageService } from '../../services/storage.service'; // Importar el servicio de Storage
 
 @Component({
   selector: 'app-sign-up',
@@ -10,38 +8,46 @@ register();
   styleUrls: ['./sign-up.page.scss'],
 })
 export class SignUpPage {
-  @ViewChild('swiper') swiper?: Swiper;
+
   nombre: string = '';
   apellido: string = '';
-  email: string = '';
+  username: string = '';
   password: string = '';
   canProceed: boolean = false;
+  nombreError: string = '';
+  apellidoError: string = '';
+  usernameError: string = '';
+  passwordError: string = '';
 
-  // Avanzar al siguiente slider
-  nextSlide() {
-    if (this.swiper) {
-      this.swiper.slideNext();
-    }
-  }
+  constructor(private storageService: StorageService, private router: Router) { }
 
-  // Validar los campos
+  // Validar todos los campos
   Validar() {
-    const nombreValido = this.nombre.length >= 2;
-    const apellidoValido = this.apellido.length >= 2;
-    const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.email); // Validación de correo
-    const passwordValido = this.password.length >= 8; // Mínimo 8 caracteres
+    this.nombreError = this.nombre.length >= 5 ? '' : 'El nombre debe tener al menos 5 caracteres.';
+    this.apellidoError = this.apellido.length >= 5 ? '' : 'El apellido debe tener al menos 5 caracteres.';
+    this.usernameError = this.username.length >= 3 ? '' : 'El nombre de usuario debe tener al menos 3 caracteres.';
+    this.passwordError = this.password.length >= 8 ? '' : 'La contraseña debe tener al menos 8 caracteres.';
 
-    // Habilitar el botón solo si todos los campos son válidos
-    this.canProceed = nombreValido && apellidoValido && emailValido && passwordValido;
+    this.canProceed = !this.nombreError && !this.apellidoError && !this.usernameError && !this.passwordError;
   }
 
-  // Lógica para el registro
-  registrarUsuario() {
+  // Registrar el usuario
+  async registrarUsuario() {
     if (this.canProceed) {
-      console.log('Registrando usuario con:', this.nombre, this.apellido, this.email, this.password);
-      // Aquí puedes implementar la lógica para enviar los datos al servidor o base de datos.
+      const nuevoUsuario = {
+        nombre: this.nombre.trim(),
+        apellido: this.apellido.trim(),
+        username: this.username.trim(),  // Aseguramos que no haya espacios en blanco al principio/final
+        password: this.password.trim()  // Aseguramos que no haya espacios en blanco al principio/final
+      };
+
+      // Guardar el usuario en Ionic Storage
+      await this.storageService.setItem('usuario', nuevoUsuario);
+
+      // Navegar a la página de inicio de sesión
+      this.router.navigate(['/home']);
     } else {
-      console.log('Por favor, completa todos los campos correctamente.');
+      console.log('Por favor completa todos los campos correctamente.');
     }
   }
 }
