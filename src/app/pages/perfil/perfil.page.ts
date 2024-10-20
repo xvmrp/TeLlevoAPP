@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class PerfilPage implements OnInit {
 
-  usuario: any = {};  // Variable para almacenar los datos del usuario
+  usuario: any = {};  // Variable para almacenar los datos del usuario actual
   imagenPerfil: string | null = null;  // Variable para almacenar la imagen en base64
 
   @ViewChild('fileInput') fileInput!: ElementRef;  // Referencia al input de archivo
@@ -17,15 +17,16 @@ export class PerfilPage implements OnInit {
   constructor(private storageService: StorageService, private router: Router) { }
 
   async ngOnInit() {
-    // Obtener los datos del usuario desde Ionic Storage
-    const datosUsuario = await this.storageService.getItem('usuario');
-    if (datosUsuario) {
-      this.usuario = datosUsuario;
-      this.imagenPerfil = datosUsuario.imagen || null;  // Obtener la imagen si está guardada
+    // Obtener los datos del usuario actual desde Ionic Storage
+    const usuarioActual = await this.storageService.getItem('usuario_actual');
+    if (usuarioActual) {
+      this.usuario = usuarioActual;
+      this.imagenPerfil = usuarioActual.imagen || null;  // Obtener la imagen si está guardada
 
-      console.log('Datos del usuario:', this.usuario); // Verificar si se cargan los datos correctamente
+      console.log('Datos del usuario actual:', this.usuario); // Verificar si se cargan los datos correctamente
     } else {
       console.log('No se encontró un usuario registrado');
+      this.router.navigate(['/home']);  // Redirigir al inicio de sesión si no hay usuario logueado
     }
   }
 
@@ -52,13 +53,26 @@ export class PerfilPage implements OnInit {
       // Actualizar el usuario con la imagen
       this.usuario.imagen = this.imagenPerfil;
 
-      // Guardar el usuario con la imagen actualizada
-      await this.storageService.setItem('usuario', this.usuario);
-      console.log('Imagen de perfil guardada');
+      // Obtener la lista completa de usuarios
+      let usuarios = await this.storageService.getItem('usuarios') || [];
+
+      // Buscar el índice del usuario actual en la lista de usuarios
+      const index = usuarios.findIndex((user: any) => user.username === this.usuario.username);
+
+      if (index !== -1) {
+        // Actualizar la información del usuario en la lista de usuarios
+        usuarios[index] = this.usuario;
+
+        // Guardar la lista de usuarios actualizada en Ionic Storage
+        await this.storageService.setItem('usuarios', usuarios);
+        console.log('Imagen de perfil guardada');
+      }
     }
   }
 
-  cerrarSesion() { // Limpiar el almacenamiento
+  async cerrarSesion() {
+    // Limpiar solo el usuario actual del almacenamiento (opcional, según tu lógica)
+    await this.storageService.setItem('usuario_actual', null);
     this.router.navigate(['/home']);  // Redirigir a la página de inicio
   }
 
