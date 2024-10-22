@@ -30,6 +30,14 @@ export class SignUpPage {
 
     this.canProceed = !this.nombreError && !this.apellidoError && !this.usernameError && !this.passwordError;
   }
+  
+  async presentToast(message: string) {
+    const toast = document.createElement('ion-toast');
+    toast.message = message;
+    toast.duration = 2000;
+    document.body.appendChild(toast);
+    return toast.present();
+  }
 
   // Registrar el usuario
   async registrarUsuario() {
@@ -48,6 +56,7 @@ export class SignUpPage {
       const usuarioExistente = usuarios.find((user: any) => user.username === this.username);
       if (usuarioExistente) {
         console.log('El usuario ya está registrado.');
+        this.presentToast('El usuario ya está registrado.');
         return;
       }
 
@@ -65,4 +74,5 @@ export class SignUpPage {
       console.log('Por favor completa todos los campos correctamente.');
     }
   }
+
 }
